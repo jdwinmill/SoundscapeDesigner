@@ -73,7 +73,7 @@ class Mixer:
                 continue
 
             # Resampling ratio: how fast to consume source samples
-            ratio = bpm / stem.base_bpm
+            ratio = (bpm / stem.base_bpm) * stem.speed
             pos = self._playback_positions.get(id(stem), 0.0)
             audio = stem.audio_data
             audio_len = len(audio)

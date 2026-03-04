@@ -17,9 +17,9 @@ from soundscape.stem import Stem
 STEMS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "stems")
 
 # Layout constants
-WINDOW_WIDTH = 1100
-WINDOW_HEIGHT = 800
-PLOT_HEIGHT = 250
+WINDOW_WIDTH = 1200
+WINDOW_HEIGHT = 850
+PLOT_HEIGHT = 260
 BPM_MIN = 60.0
 BPM_MAX = 240.0
 
@@ -34,6 +34,151 @@ STEM_COLORS = [
     (245, 66, 180),
 ]
 
+# UI palette
+_BG_DARK = (22, 22, 30)
+_BG_MID = (30, 30, 40)
+_BG_CHILD = (28, 28, 38)
+_ACCENT = (80, 140, 255)
+_ACCENT_HOVER = (100, 160, 255)
+_ACCENT_ACTIVE = (60, 120, 230)
+_TEXT_DIM = (140, 140, 160)
+_TEXT_BRIGHT = (230, 230, 240)
+_SEPARATOR = (50, 50, 65)
+_FRAME_BG = (38, 38, 52)
+_FRAME_HOVER = (48, 48, 65)
+_GRAB = (90, 150, 255)
+_GRAB_ACTIVE = (110, 170, 255)
+_HEADER_BG = (35, 35, 48)
+_TABLE_ROW_ALT = (32, 32, 44)
+_RED_BTN = (200, 60, 60)
+_RED_BTN_HOVER = (220, 80, 80)
+
+
+def _apply_global_theme():
+    """Set up a modern, rounded, low-contrast theme."""
+    with dpg.theme() as global_theme:
+        with dpg.theme_component(dpg.mvAll):
+            # Rounding
+            dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 6)
+            dpg.add_theme_style(dpg.mvStyleVar_ChildRounding, 8)
+            dpg.add_theme_style(dpg.mvStyleVar_WindowRounding, 8)
+            dpg.add_theme_style(dpg.mvStyleVar_PopupRounding, 8)
+            dpg.add_theme_style(dpg.mvStyleVar_ScrollbarRounding, 6)
+            dpg.add_theme_style(dpg.mvStyleVar_GrabRounding, 4)
+            dpg.add_theme_style(dpg.mvStyleVar_TabRounding, 6)
+
+            # Spacing & padding
+            dpg.add_theme_style(dpg.mvStyleVar_FramePadding, 8, 5)
+            dpg.add_theme_style(dpg.mvStyleVar_ItemSpacing, 10, 6)
+            dpg.add_theme_style(dpg.mvStyleVar_ItemInnerSpacing, 6, 4)
+            dpg.add_theme_style(dpg.mvStyleVar_WindowPadding, 16, 12)
+            dpg.add_theme_style(dpg.mvStyleVar_GrabMinSize, 14)
+            dpg.add_theme_style(dpg.mvStyleVar_ScrollbarSize, 12)
+
+            # Colors — backgrounds
+            dpg.add_theme_color(dpg.mvThemeCol_WindowBg, _BG_DARK)
+            dpg.add_theme_color(dpg.mvThemeCol_ChildBg, _BG_CHILD)
+            dpg.add_theme_color(dpg.mvThemeCol_PopupBg, _BG_MID)
+            dpg.add_theme_color(dpg.mvThemeCol_MenuBarBg, _BG_MID)
+
+            # Colors — frames / inputs
+            dpg.add_theme_color(dpg.mvThemeCol_FrameBg, _FRAME_BG)
+            dpg.add_theme_color(dpg.mvThemeCol_FrameBgHovered, _FRAME_HOVER)
+            dpg.add_theme_color(dpg.mvThemeCol_FrameBgActive, (55, 55, 75))
+
+            # Colors — buttons
+            dpg.add_theme_color(dpg.mvThemeCol_Button, (45, 45, 62))
+            dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, (58, 58, 78))
+            dpg.add_theme_color(dpg.mvThemeCol_ButtonActive, (68, 68, 90))
+
+            # Colors — sliders / grabs
+            dpg.add_theme_color(dpg.mvThemeCol_SliderGrab, _GRAB)
+            dpg.add_theme_color(dpg.mvThemeCol_SliderGrabActive, _GRAB_ACTIVE)
+
+            # Colors — headers (table headers, collapsing headers)
+            dpg.add_theme_color(dpg.mvThemeCol_Header, _HEADER_BG)
+            dpg.add_theme_color(dpg.mvThemeCol_HeaderHovered, (45, 45, 62))
+            dpg.add_theme_color(dpg.mvThemeCol_HeaderActive, (55, 55, 72))
+
+            # Colors — table
+            dpg.add_theme_color(dpg.mvThemeCol_TableRowBgAlt, _TABLE_ROW_ALT)
+            dpg.add_theme_color(dpg.mvThemeCol_TableBorderStrong, _SEPARATOR)
+            dpg.add_theme_color(dpg.mvThemeCol_TableBorderLight, (40, 40, 55))
+
+            # Colors — separators, borders
+            dpg.add_theme_color(dpg.mvThemeCol_Separator, _SEPARATOR)
+            dpg.add_theme_color(dpg.mvThemeCol_Border, (45, 45, 60))
+            dpg.add_theme_color(dpg.mvThemeCol_BorderShadow, (0, 0, 0, 0))
+
+            # Colors — text
+            dpg.add_theme_color(dpg.mvThemeCol_Text, _TEXT_BRIGHT)
+            dpg.add_theme_color(dpg.mvThemeCol_TextDisabled, _TEXT_DIM)
+
+            # Colors — scrollbar
+            dpg.add_theme_color(dpg.mvThemeCol_ScrollbarBg, (20, 20, 28))
+            dpg.add_theme_color(dpg.mvThemeCol_ScrollbarGrab, (55, 55, 75))
+            dpg.add_theme_color(dpg.mvThemeCol_ScrollbarGrabHovered, (70, 70, 95))
+            dpg.add_theme_color(dpg.mvThemeCol_ScrollbarGrabActive, (85, 85, 110))
+
+            # Colors — checkmark / check box
+            dpg.add_theme_color(dpg.mvThemeCol_CheckMark, _ACCENT)
+
+            # Colors — plot
+            dpg.add_theme_color(dpg.mvThemeCol_PlotLines, _ACCENT)
+
+        # Plot-specific tweaks
+        with dpg.theme_component(dpg.mvPlot):
+            dpg.add_theme_style(dpg.mvPlotStyleVar_PlotPadding, 12, 10)
+            dpg.add_theme_color(
+                dpg.mvPlotCol_PlotBg, (24, 24, 34), category=dpg.mvThemeCat_Plots
+            )
+            dpg.add_theme_color(
+                dpg.mvPlotCol_FrameBg, _BG_CHILD, category=dpg.mvThemeCat_Plots
+            )
+
+    dpg.bind_theme(global_theme)
+
+
+def _create_accent_button_theme():
+    """Highlighted button theme for primary actions."""
+    with dpg.theme() as theme:
+        with dpg.theme_component(dpg.mvButton):
+            dpg.add_theme_color(dpg.mvThemeCol_Button, _ACCENT)
+            dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, _ACCENT_HOVER)
+            dpg.add_theme_color(dpg.mvThemeCol_ButtonActive, _ACCENT_ACTIVE)
+            dpg.add_theme_color(dpg.mvThemeCol_Text, (255, 255, 255))
+    return theme
+
+
+def _create_danger_button_theme():
+    """Red button theme for destructive actions."""
+    with dpg.theme() as theme:
+        with dpg.theme_component(dpg.mvButton):
+            dpg.add_theme_color(dpg.mvThemeCol_Button, _RED_BTN)
+            dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, _RED_BTN_HOVER)
+            dpg.add_theme_color(dpg.mvThemeCol_ButtonActive, (230, 100, 100))
+            dpg.add_theme_color(dpg.mvThemeCol_Text, (255, 255, 255))
+    return theme
+
+
+def _create_ghost_button_theme():
+    """Subtle borderless button for secondary actions."""
+    with dpg.theme() as theme:
+        with dpg.theme_component(dpg.mvButton):
+            dpg.add_theme_color(dpg.mvThemeCol_Button, (0, 0, 0, 0))
+            dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, (255, 255, 255, 20))
+            dpg.add_theme_color(dpg.mvThemeCol_ButtonActive, (255, 255, 255, 35))
+    return theme
+
+
+def _section_header(label: str):
+    """Draw a styled section header with a subtle separator."""
+    dpg.add_spacer(height=6)
+    dpg.add_separator()
+    dpg.add_spacer(height=4)
+    dpg.add_text(label, color=_ACCENT)
+    dpg.add_spacer(height=4)
+
 
 class SoundscapeApp:
     def __init__(self):
@@ -43,6 +188,9 @@ class SoundscapeApp:
         self.playing = False
         self._next_stem_id = 0
         self._presets: Dict[str, str] = self._discover_presets()
+        self._accent_theme = None
+        self._danger_theme = None
+        self._ghost_theme = None
 
     @staticmethod
     def _discover_presets() -> Dict[str, str]:
@@ -50,7 +198,6 @@ class SoundscapeApp:
         presets: Dict[str, str] = {}
         pattern = os.path.join(STEMS_DIR, "**", "*_mix.json")
         for path in sorted(glob.glob(pattern, recursive=True)):
-            # Use filename (without _mix.json) as the display label
             filename = os.path.basename(path)
             label = filename.replace("_mix.json", "").replace("_", " ").title()
             presets[label] = path
@@ -64,12 +211,17 @@ class SoundscapeApp:
             height=WINDOW_HEIGHT,
         )
 
+        _apply_global_theme()
+        self._accent_theme = _create_accent_button_theme()
+        self._danger_theme = _create_danger_button_theme()
+        self._ghost_theme = _create_ghost_button_theme()
+
         with dpg.window(tag="primary", label="Soundscape Designer"):
-            self._build_top_controls()
-            dpg.add_spacer(height=8)
+            self._build_transport()
+            self._build_tempo()
             self._build_stem_list()
-            dpg.add_spacer(height=8)
             self._build_plot()
+            self._build_config_bar()
 
         self._register_keyboard_shortcuts()
 
@@ -82,86 +234,43 @@ class SoundscapeApp:
         # Cleanup audio on exit
         self.mixer.stop()
 
-    def _build_top_controls(self):
-        # -- Transport --
-        dpg.add_text("Transport")
+    # ── Transport ──────────────────────────────────────────────
+
+    def _build_transport(self):
         with dpg.group(horizontal=True):
             play_btn = dpg.add_button(
                 tag="play_btn",
-                label="Play",
+                label="  Play  ",
                 callback=self._on_play_stop,
             )
+            dpg.bind_item_theme(play_btn, self._accent_theme)
             with dpg.tooltip(play_btn):
-                dpg.add_text("Start/stop playback (Space)")
+                dpg.add_text("Start / stop playback (Space)")
 
-            reset_btn = dpg.add_button(
+            dpg.add_button(
                 label="Restart",
                 callback=self._on_reset,
             )
-            with dpg.tooltip(reset_btn):
-                dpg.add_text("Restart all stems from the beginning")
 
             dpg.add_spacer(width=24)
-            dpg.add_text("Master:")
+
+            dpg.add_text("Master", color=_TEXT_DIM)
             tag_master = dpg.add_slider_float(
                 tag="master_vol_slider",
                 default_value=1.0,
                 min_value=0.0,
                 max_value=1.0,
                 format="%.2f",
-                width=160,
+                width=180,
                 callback=self._on_master_vol_change,
             )
             with dpg.tooltip(tag_master):
                 dpg.add_text("Global output level")
 
-        dpg.add_spacer(height=4)
-
-        # -- Tempo --
-        dpg.add_text("Tempo")
-        with dpg.group(horizontal=True):
-            dpg.add_text("Current BPM:")
-            tag_bpm = dpg.add_slider_float(
-                tag="bpm_slider",
-                default_value=150.0,
-                min_value=BPM_MIN,
-                max_value=BPM_MAX,
-                format="%.1f",
-                width=300,
-                callback=self._on_bpm_change,
-            )
-            with dpg.tooltip(tag_bpm):
-                dpg.add_text("Simulated running tempo — drag or use arrow keys")
-
-            dpg.add_spacer(width=16)
-            dpg.add_text("Base BPM:")
-            tag_base = dpg.add_slider_float(
-                tag="base_bpm_slider",
-                default_value=150.0,
-                min_value=BPM_MIN,
-                max_value=BPM_MAX,
-                format="%.1f",
-                width=200,
-                callback=self._on_base_bpm_change,
-            )
-            with dpg.tooltip(tag_base):
-                dpg.add_text("Native tempo the audio stems were recorded at")
-
-        dpg.add_spacer(height=4)
-
-        # -- File I/O --
-        dpg.add_text("Config")
-        with dpg.group(horizontal=True):
-            export_btn = dpg.add_button(label="Export JSON", callback=self._on_export)
-            with dpg.tooltip(export_btn):
-                dpg.add_text("Save stem config for the iOS app (Ctrl+E)")
-
-            load_btn = dpg.add_button(label="Load JSON", callback=self._on_import)
-            with dpg.tooltip(load_btn):
-                dpg.add_text("Load a previously saved config (Ctrl+L)")
-
             dpg.add_spacer(width=24)
-            dpg.add_text("Preset:")
+
+            # Preset selector in the transport bar — quick access
+            dpg.add_text("Preset", color=_TEXT_DIM)
             preset_names = list(self._presets.keys())
             if preset_names:
                 preset_combo = dpg.add_combo(
@@ -174,29 +283,71 @@ class SoundscapeApp:
                 with dpg.tooltip(preset_combo):
                     dpg.add_text("Load a bundled soundscape preset")
 
-    def _build_stem_list(self):
+    # ── Tempo ──────────────────────────────────────────────────
+
+    def _build_tempo(self):
+        _section_header("Tempo")
         with dpg.group(horizontal=True):
-            dpg.add_text("Stems")
-            dpg.add_text("(0)", tag="stem_count_label")
-            dpg.add_spacer(width=8)
-            dpg.add_button(label="+ Add Stem", callback=self._on_add_stem)
-            dpg.add_spacer(width=8)
+            dpg.add_text("BPM", color=_TEXT_DIM)
+            tag_bpm = dpg.add_slider_float(
+                tag="bpm_slider",
+                default_value=150.0,
+                min_value=BPM_MIN,
+                max_value=BPM_MAX,
+                format="%.1f",
+                width=360,
+                callback=self._on_bpm_change,
+            )
+            with dpg.tooltip(tag_bpm):
+                dpg.add_text("Simulated running tempo — drag or use arrow keys")
+
+            dpg.add_spacer(width=20)
+            dpg.add_text("Base", color=_TEXT_DIM)
+            tag_base = dpg.add_slider_float(
+                tag="base_bpm_slider",
+                default_value=150.0,
+                min_value=BPM_MIN,
+                max_value=BPM_MAX,
+                format="%.1f",
+                width=240,
+                callback=self._on_base_bpm_change,
+            )
+            with dpg.tooltip(tag_base):
+                dpg.add_text("Native tempo the audio stems were recorded at")
+
+    # ── Stem list ──────────────────────────────────────────────
+
+    def _build_stem_list(self):
+        _section_header("Stems")
+        with dpg.group(horizontal=True):
+            dpg.add_text("", tag="stem_count_label", color=_TEXT_DIM)
+            dpg.add_spacer(width=4)
+
+            add_btn = dpg.add_button(label="+ Add Stem", callback=self._on_add_stem)
+            dpg.bind_item_theme(add_btn, self._accent_theme)
+
+            dpg.add_spacer(width=12)
             sort_asc = dpg.add_button(label="Sort BPM Asc", callback=self._on_sort_bpm_asc)
+            dpg.bind_item_theme(sort_asc, self._ghost_theme)
             with dpg.tooltip(sort_asc):
                 dpg.add_text("Sort stems by BPM low, ascending")
+
             sort_desc = dpg.add_button(label="Sort BPM Desc", callback=self._on_sort_bpm_desc)
+            dpg.bind_item_theme(sort_desc, self._ghost_theme)
             with dpg.tooltip(sort_desc):
                 dpg.add_text("Sort stems by BPM low, descending")
+
+        dpg.add_spacer(height=4)
         dpg.add_child_window(
             tag="stem_list",
-            height=280,
-            border=True,
+            height=300,
+            border=False,
         )
         dpg.add_text(
-            "No stems loaded. Click '+ Add Stem' to load an audio file.",
+            "No stems loaded — click '+ Add Stem' or pick a preset to get started.",
             tag="stem_empty_hint",
             parent="stem_list",
-            color=(160, 160, 160),
+            color=_TEXT_DIM,
         )
 
     def _build_stem_table(self):
@@ -208,29 +359,35 @@ class SoundscapeApp:
             tag="stem_table",
             parent="stem_list",
             header_row=True,
-            borders_innerH=True,
-            borders_outerH=True,
-            borders_innerV=True,
-            borders_outerV=True,
+            borders_innerH=False,
+            borders_outerH=False,
+            borders_innerV=False,
+            borders_outerV=False,
+            row_background=True,
             resizable=True,
         ):
             dpg.add_table_column(label="Name", width_fixed=True, init_width_or_weight=140)
             dpg.add_table_column(label="S", width_fixed=True, init_width_or_weight=30)
             dpg.add_table_column(label="M", width_fixed=True, init_width_or_weight=30)
-            dpg.add_table_column(label="Volume", width_fixed=True, init_width_or_weight=100)
-            dpg.add_table_column(label="Base BPM", width_fixed=True, init_width_or_weight=100)
-            dpg.add_table_column(label="BPM Low", width_fixed=True, init_width_or_weight=100)
-            dpg.add_table_column(label="BPM High", width_fixed=True, init_width_or_weight=100)
+            dpg.add_table_column(label="Vol", width_fixed=True, init_width_or_weight=90)
+            dpg.add_table_column(label="Speed", width_fixed=True, init_width_or_weight=80)
+            dpg.add_table_column(label="Base BPM", width_fixed=True, init_width_or_weight=90)
+            dpg.add_table_column(label="BPM Low", width_fixed=True, init_width_or_weight=90)
+            dpg.add_table_column(label="BPM High", width_fixed=True, init_width_or_weight=90)
             dpg.add_table_column(label="Fade In", width_fixed=True, init_width_or_weight=80)
             dpg.add_table_column(label="Fade Out", width_fixed=True, init_width_or_weight=80)
-            dpg.add_table_column(label="Actions", width_fixed=True, init_width_or_weight=180)
+            dpg.add_table_column(label="", width_fixed=True, init_width_or_weight=120)
+
+    # ── Plot ───────────────────────────────────────────────────
 
     def _build_plot(self):
+        _section_header("Volume Curves")
         with dpg.plot(
             tag="curve_plot",
-            label="Volume Curves",
+            label="",
             height=PLOT_HEIGHT,
             width=-1,
+            no_title=True,
         ):
             dpg.add_plot_legend()
             dpg.add_plot_axis(dpg.mvXAxis, label="BPM", tag="x_axis")
@@ -238,21 +395,33 @@ class SoundscapeApp:
             dpg.add_plot_axis(dpg.mvYAxis, label="Volume", tag="y_axis")
             dpg.set_axis_limits("y_axis", 0.0, 1.1)
 
-            # Vertical line for current BPM
             dpg.add_vline_series(
                 [150.0],
                 tag="bpm_line",
                 parent="y_axis",
             )
-
-            # BPM readout annotation
             dpg.add_plot_annotation(
                 tag="bpm_annotation",
                 default_value=(150.0, 1.05),
                 label="150.0",
-                color=(255, 255, 255, 200),
+                color=(255, 255, 255, 180),
                 offset=(0, -15),
             )
+
+    # ── Config bar (bottom) ────────────────────────────────────
+
+    def _build_config_bar(self):
+        dpg.add_spacer(height=6)
+        with dpg.group(horizontal=True):
+            export_btn = dpg.add_button(label="Export JSON", callback=self._on_export)
+            with dpg.tooltip(export_btn):
+                dpg.add_text("Save stem config for the iOS app (Ctrl+E)")
+
+            load_btn = dpg.add_button(label="Load JSON", callback=self._on_import)
+            with dpg.tooltip(load_btn):
+                dpg.add_text("Load a previously saved config (Ctrl+L)")
+
+    # ── Keyboard shortcuts ─────────────────────────────────────
 
     def _register_keyboard_shortcuts(self):
         with dpg.handler_registry():
@@ -270,7 +439,6 @@ class SoundscapeApp:
             )
 
     def _on_key_space(self):
-        # Don't trigger if a text input is focused
         focused = dpg.get_active_window()
         self._on_play_stop()
 
@@ -281,6 +449,8 @@ class SoundscapeApp:
     def _on_key_l(self):
         if dpg.is_key_down(dpg.mvKey_LControl) or dpg.is_key_down(dpg.mvKey_RControl):
             self._on_import()
+
+    # ── Callbacks ──────────────────────────────────────────────
 
     def _on_preset_select(self, sender, value):
         path = self._presets.get(value)
@@ -304,12 +474,12 @@ class SoundscapeApp:
         if self.playing:
             self.mixer.stop()
             self.playing = False
-            dpg.set_item_label("play_btn", "Play")
+            dpg.set_item_label("play_btn", "  Play  ")
         else:
             self._sync_stems()
             self.mixer.start()
             self.playing = True
-            dpg.set_item_label("play_btn", "Stop")
+            dpg.set_item_label("play_btn", "  Stop  ")
 
     def _on_reset(self):
         self.mixer.reset_positions()
@@ -358,14 +528,11 @@ class SoundscapeApp:
             print(f"Error loading config {path}: {e}")
             return
 
-        # Clear existing stems and widgets
         self.stems.clear()
         self.stem_widgets.clear()
 
-        # Set base BPM from config
         dpg.set_value("base_bpm_slider", config.base_bpm)
 
-        # Rebuild stems from config, resolving audio files relative to the JSON
         for stem in config.stems:
             stem.base_bpm = config.base_bpm
             if stem.file_path and stem.audio_data is None:
@@ -434,7 +601,6 @@ class SoundscapeApp:
         self._update_plot()
 
     def _ensure_stem_table(self):
-        """Create the table if it doesn't exist yet."""
         if not dpg.does_item_exist("stem_table"):
             self._build_stem_table()
 
@@ -482,7 +648,20 @@ class SoundscapeApp:
                 callback=self._on_stem_vol,
             )
 
-            # Base BPM (per-stem native tempo)
+            # Speed multiplier
+            speed_slider = dpg.add_slider_float(
+                default_value=stem.speed,
+                min_value=0.25,
+                max_value=4.0,
+                format="%.2fx",
+                width=-1,
+                user_data=stem_id,
+                callback=self._on_stem_speed,
+            )
+            with dpg.tooltip(speed_slider):
+                dpg.add_text("Playback speed — 1.0x = normal, 2.0x = double speed")
+
+            # Base BPM (per-stem)
             base_bpm_slider = dpg.add_slider_float(
                 default_value=stem.base_bpm,
                 min_value=BPM_MIN,
@@ -493,7 +672,7 @@ class SoundscapeApp:
                 callback=self._on_stem_base_bpm,
             )
             with dpg.tooltip(base_bpm_slider):
-                dpg.add_text("Native tempo this stem was recorded at — controls playback speed scaling")
+                dpg.add_text("Native tempo — controls playback speed scaling")
 
             # BPM Low
             dpg.add_slider_float(
@@ -539,23 +718,28 @@ class SoundscapeApp:
                 callback=self._on_fade_out,
             )
 
-            # Actions: Up, Down, Remove
+            # Actions: compact arrow buttons + remove
             with dpg.group(horizontal=True):
-                dpg.add_button(
-                    label="Up",
+                up_btn = dpg.add_button(
+                    label=" ^ ",
                     user_data=stem_id,
                     callback=self._on_move_up,
                 )
-                dpg.add_button(
-                    label="Down",
+                dpg.bind_item_theme(up_btn, self._ghost_theme)
+
+                down_btn = dpg.add_button(
+                    label=" v ",
                     user_data=stem_id,
                     callback=self._on_move_down,
                 )
+                dpg.bind_item_theme(down_btn, self._ghost_theme)
+
                 remove_btn = dpg.add_button(
-                    label="Remove",
+                    label=" x ",
                     user_data=stem_id,
                     callback=self._on_remove,
                 )
+                dpg.bind_item_theme(remove_btn, self._danger_theme)
                 with dpg.tooltip(remove_btn):
                     dpg.add_text("Remove this stem")
 
@@ -565,7 +749,6 @@ class SoundscapeApp:
         }
 
     def _rebuild_stem_table(self):
-        """Tear down and recreate the entire stem table from self.stems."""
         self.stem_widgets.clear()
         self._build_stem_table()
 
@@ -585,6 +768,11 @@ class SoundscapeApp:
         self.stems[idx].muted = value
         self._sync_stems()
         self._update_plot()
+
+    def _on_stem_speed(self, sender, value, stem_id):
+        idx = self.stem_widgets[stem_id]["stem_index"]
+        self.stems[idx].speed = value
+        self._sync_stems()
 
     def _on_stem_base_bpm(self, sender, value, stem_id):
         idx = self.stem_widgets[stem_id]["stem_index"]
@@ -660,42 +848,33 @@ class SoundscapeApp:
         self._update_plot()
 
     def _update_stem_count(self):
-        """Update the stem count label and empty-state hint visibility."""
         n = len(self.stems)
-        dpg.set_value("stem_count_label", f"({n})")
+        dpg.set_value("stem_count_label", f"{n} stem{'s' if n != 1 else ''}")
         if dpg.does_item_exist("stem_empty_hint"):
             dpg.configure_item("stem_empty_hint", show=(n == 0))
 
     def _sync_stems(self):
-        """Push current stems list to the mixer."""
         self.mixer.set_stems(self.stems)
 
     def _update_plot(self):
-        """Redraw all volume curves and the BPM indicator line."""
         bpm = dpg.get_value("bpm_slider")
 
-        # Update BPM vertical line
         dpg.set_value("bpm_line", [[bpm]])
-
-        # Update BPM annotation
         dpg.configure_item(
             "bpm_annotation",
             default_value=(bpm, 1.05),
             label=f"{bpm:.1f}",
         )
 
-        # Remove old curve series
         for tag in list(dpg.get_item_children("y_axis", 1)):
             alias = dpg.get_item_alias(tag)
             if alias and alias.startswith("curve_"):
                 dpg.delete_item(tag)
 
-        # Draw each stem's curve with legend labels
         bpm_range = np.linspace(BPM_MIN, BPM_MAX, 500)
         any_solo = any(s.solo for s in self.stems)
 
         for i, stem in enumerate(self.stems):
-            # When any stem is soloed, non-solo stems show zero
             if any_solo and not stem.solo:
                 vols = [0.0] * len(bpm_range)
             else:

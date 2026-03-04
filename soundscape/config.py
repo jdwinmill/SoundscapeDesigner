@@ -57,6 +57,8 @@ class SoundscapeConfig:
         # Only include per-stem baseBPM if it differs from the global value
         if stem.base_bpm != self.base_bpm:
             d["baseBPM"] = stem.base_bpm
+        if stem.speed != 1.0:
+            d["speed"] = stem.speed
         return d
 
     @staticmethod
@@ -70,4 +72,5 @@ class SoundscapeConfig:
             volume=d.get("volume", 1.0),
             file_path=d.get("file"),
             base_bpm=d.get("baseBPM", global_base_bpm),
+            speed=d.get("speed", 1.0),
         )

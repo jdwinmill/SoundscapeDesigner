@@ -26,6 +26,7 @@ class Stem:
     fade_out: float = 5.0
     volume: float = 1.0
     base_bpm: float = 150.0
+    speed: float = 1.0
     muted: bool = False
     solo: bool = False
     file_path: Optional[str] = None
