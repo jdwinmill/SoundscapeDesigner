@@ -1,0 +1,85 @@
+{
+  "baseBPM": 150,
+  "stems": [
+    {
+      "file": "neon_pad_low.wav",
+      "bpmRange": [
+        95,
+        145
+      ],
+      "fadeIn": 10,
+      "fadeOut": 10,
+      "volume": 0.5
+    },
+    {
+      "file": "neon_bass_walk.wav",
+      "bpmRange": [
+        100,
+        140
+      ],
+      "fadeIn": 8,
+      "fadeOut": 8,
+      "volume": 0.55
+    },
+    {
+      "file": "neon_pad_mid.wav",
+      "bpmRange": [
+        125,
+        170
+      ],
+      "fadeIn": 10,
+      "fadeOut": 10,
+      "volume": 0.45
+    },
+    {
+      "file": "neon_arp.wav",
+      "bpmRange": [
+        130,
+        180
+      ],
+      "fadeIn": 8,
+      "fadeOut": 8,
+      "volume": 0.4
+    },
+    {
+      "file": "neon_kick.wav",
+      "bpmRange": [
+        140,
+        200
+      ],
+      "fadeIn": 8,
+      "fadeOut": 5,
+      "volume": 0.6
+    },
+    {
+      "file": "neon_hihat.wav",
+      "bpmRange": [
+        145,
+        200
+      ],
+      "fadeIn": 8,
+      "fadeOut": 5,
+      "volume": 0.3
+    },
+    {
+      "file": "neon_bass_drive.wav",
+      "bpmRange": [
+        150,
+        200
+      ],
+      "fadeIn": 10,
+      "fadeOut": 5,
+      "volume": 0.5
+    },
+    {
+      "file": "neon_lead.wav",
+      "bpmRange": [
+        160,
+        200
+      ],
+      "fadeIn": 10,
+      "fadeOut": 5,
+      "volume": 0.35
+    }
+  ]
+}

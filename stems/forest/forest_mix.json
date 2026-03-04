@@ -1,0 +1,85 @@
+{
+  "baseBPM": 150,
+  "stems": [
+    {
+      "file": "forest_texture.wav",
+      "bpmRange": [
+        95,
+        160
+      ],
+      "fadeIn": 10,
+      "fadeOut": 15,
+      "volume": 0.3
+    },
+    {
+      "file": "forest_drone.wav",
+      "bpmRange": [
+        95,
+        150
+      ],
+      "fadeIn": 10,
+      "fadeOut": 10,
+      "volume": 0.4
+    },
+    {
+      "file": "forest_pad.wav",
+      "bpmRange": [
+        120,
+        170
+      ],
+      "fadeIn": 10,
+      "fadeOut": 10,
+      "volume": 0.45
+    },
+    {
+      "file": "forest_marimba.wav",
+      "bpmRange": [
+        125,
+        175
+      ],
+      "fadeIn": 8,
+      "fadeOut": 8,
+      "volume": 0.4
+    },
+    {
+      "file": "forest_clicks.wav",
+      "bpmRange": [
+        135,
+        185
+      ],
+      "fadeIn": 8,
+      "fadeOut": 8,
+      "volume": 0.25
+    },
+    {
+      "file": "forest_bass.wav",
+      "bpmRange": [
+        140,
+        195
+      ],
+      "fadeIn": 10,
+      "fadeOut": 8,
+      "volume": 0.5
+    },
+    {
+      "file": "forest_shaker.wav",
+      "bpmRange": [
+        150,
+        200
+      ],
+      "fadeIn": 8,
+      "fadeOut": 5,
+      "volume": 0.25
+    },
+    {
+      "file": "forest_bells.wav",
+      "bpmRange": [
+        155,
+        200
+      ],
+      "fadeIn": 10,
+      "fadeOut": 5,
+      "volume": 0.35
+    }
+  ]
+}

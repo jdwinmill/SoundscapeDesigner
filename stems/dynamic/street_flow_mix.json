@@ -1,0 +1,45 @@
+{
+  "baseBPM": 150.0,
+  "stems": [
+    {
+      "file": "base.wav",
+      "bpmRange": [90, 190],
+      "fadeIn": 10,
+      "fadeOut": 15,
+      "volume": 0.30,
+      "baseBPM": 150.0
+    },
+    {
+      "file": "slow_drum.wav",
+      "bpmRange": [105, 148],
+      "fadeIn": 12,
+      "fadeOut": 15,
+      "volume": 0.50,
+      "baseBPM": 130.0
+    },
+    {
+      "file": "marching.wav",
+      "bpmRange": [132, 172],
+      "fadeIn": 12,
+      "fadeOut": 12,
+      "volume": 0.55,
+      "baseBPM": 135.0
+    },
+    {
+      "file": "fast_drum.wav",
+      "bpmRange": [148, 200],
+      "fadeIn": 10,
+      "fadeOut": 8,
+      "volume": 0.60,
+      "baseBPM": 155.0
+    },
+    {
+      "file": "techno_base.wav",
+      "bpmRange": [168, 210],
+      "fadeIn": 10,
+      "fadeOut": 5,
+      "volume": 0.55,
+      "baseBPM": 145.0
+    }
+  ]
+}

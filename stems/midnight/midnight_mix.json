@@ -1,0 +1,85 @@
+{
+  "baseBPM": 150,
+  "stems": [
+    {
+      "file": "midnight_drone.wav",
+      "bpmRange": [
+        95,
+        145
+      ],
+      "fadeIn": 12,
+      "fadeOut": 10,
+      "volume": 0.4
+    },
+    {
+      "file": "midnight_texture.wav",
+      "bpmRange": [
+        100,
+        155
+      ],
+      "fadeIn": 10,
+      "fadeOut": 10,
+      "volume": 0.3
+    },
+    {
+      "file": "midnight_sub.wav",
+      "bpmRange": [
+        120,
+        170
+      ],
+      "fadeIn": 8,
+      "fadeOut": 8,
+      "volume": 0.55
+    },
+    {
+      "file": "midnight_kick.wav",
+      "bpmRange": [
+        130,
+        200
+      ],
+      "fadeIn": 10,
+      "fadeOut": 5,
+      "volume": 0.65
+    },
+    {
+      "file": "midnight_hat.wav",
+      "bpmRange": [
+        135,
+        200
+      ],
+      "fadeIn": 8,
+      "fadeOut": 5,
+      "volume": 0.28
+    },
+    {
+      "file": "midnight_acid.wav",
+      "bpmRange": [
+        145,
+        200
+      ],
+      "fadeIn": 10,
+      "fadeOut": 5,
+      "volume": 0.45
+    },
+    {
+      "file": "midnight_stab.wav",
+      "bpmRange": [
+        155,
+        200
+      ],
+      "fadeIn": 10,
+      "fadeOut": 5,
+      "volume": 0.35
+    },
+    {
+      "file": "midnight_clap.wav",
+      "bpmRange": [
+        160,
+        200
+      ],
+      "fadeIn": 10,
+      "fadeOut": 5,
+      "volume": 0.3
+    }
+  ]
+}

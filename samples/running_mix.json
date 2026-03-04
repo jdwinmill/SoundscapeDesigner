@@ -1,0 +1,75 @@
+{
+  "baseBPM": 150.0,
+  "stems": [
+    {
+      "file": "08_rain_texture.wav",
+      "bpmRange": [80, 170],
+      "fadeIn": 5,
+      "fadeOut": 15,
+      "volume": 0.35
+    },
+    {
+      "file": "05_pad_dark.wav",
+      "bpmRange": [100, 140],
+      "fadeIn": 10,
+      "fadeOut": 10,
+      "volume": 0.55
+    },
+    {
+      "file": "04_pad_warm.wav",
+      "bpmRange": [125, 160],
+      "fadeIn": 10,
+      "fadeOut": 10,
+      "volume": 0.45
+    },
+    {
+      "file": "09_breath_texture.wav",
+      "bpmRange": [130, 165],
+      "fadeIn": 8,
+      "fadeOut": 8,
+      "volume": 0.30
+    },
+    {
+      "file": "03_bass_pulse.wav",
+      "bpmRange": [135, 175],
+      "fadeIn": 10,
+      "fadeOut": 10,
+      "volume": 0.50
+    },
+    {
+      "file": "07_shaker.wav",
+      "bpmRange": [138, 170],
+      "fadeIn": 8,
+      "fadeOut": 8,
+      "volume": 0.30
+    },
+    {
+      "file": "01_kick_loop.wav",
+      "bpmRange": [150, 195],
+      "fadeIn": 10,
+      "fadeOut": 5,
+      "volume": 0.65
+    },
+    {
+      "file": "02_hihat_loop.wav",
+      "bpmRange": [155, 200],
+      "fadeIn": 8,
+      "fadeOut": 5,
+      "volume": 0.25
+    },
+    {
+      "file": "06_arp_bright.wav",
+      "bpmRange": [160, 200],
+      "fadeIn": 10,
+      "fadeOut": 5,
+      "volume": 0.35
+    },
+    {
+      "file": "10_melodic_chime.wav",
+      "bpmRange": [155, 210],
+      "fadeIn": 12,
+      "fadeOut": 5,
+      "volume": 0.30
+    }
+  ]
+}
