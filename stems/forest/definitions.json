@@ -1,0 +1,420 @@
+{
+  "pack": "forest",
+  "genre": "organic_electronic",
+  "mood_summary": "Nature-inspired, meditative, gently building. Earthy textures with warm melodic elements that evoke trail running through woods.",
+  "key_center": "Cm",
+  "bpm_center": 150,
+  "energy_range": [0.15, 0.75],
+  "best_for_phases": ["warmup", "easy_run", "cooldown"],
+  "cross_pack_compatible_with": ["neon"],
+  "stems": [
+    {
+      "id": "forest_texture",
+      "file": "forest_texture.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "textural",
+        "layer": "high",
+        "function": "atmosphere"
+      },
+      "energy": {
+        "intensity": 0.15,
+        "drive": 0.05,
+        "groove": 0.1
+      },
+      "mood": {
+        "tags": ["peaceful", "natural", "ambient"],
+        "valence": 0.6,
+        "arousal": 0.15
+      },
+      "sonic": {
+        "brightness": 0.5,
+        "density": 0.2,
+        "space": 0.95,
+        "warmth": 0.7
+      },
+      "mix_hints": {
+        "pairs_well_with": ["forest_drone", "forest_pad"],
+        "conflicts_with": [],
+        "solo_capable": false,
+        "intro_suitable": true,
+        "climax_suitable": false
+      },
+      "transition_hints": {
+        "fade_in_beats": 16,
+        "fade_out_beats": 16,
+        "entry_point": "any",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["warmup", "cooldown"],
+        "avoid_for": ["sprint", "interval_peak"]
+      }
+    },
+    {
+      "id": "forest_drone",
+      "file": "forest_drone.wav",
+      "musical": {
+        "key": "Cm",
+        "scale": "aeolian",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.7
+      },
+      "role": {
+        "type": "harmonic",
+        "layer": "low",
+        "function": "foundation"
+      },
+      "energy": {
+        "intensity": 0.2,
+        "drive": 0.1,
+        "groove": 0.05
+      },
+      "mood": {
+        "tags": ["deep", "grounding", "steady"],
+        "valence": 0.4,
+        "arousal": 0.2
+      },
+      "sonic": {
+        "brightness": 0.2,
+        "density": 0.4,
+        "space": 0.8,
+        "warmth": 0.95
+      },
+      "mix_hints": {
+        "pairs_well_with": ["forest_texture", "forest_pad", "forest_marimba"],
+        "conflicts_with": ["forest_bass"],
+        "solo_capable": false,
+        "intro_suitable": true,
+        "climax_suitable": false
+      },
+      "transition_hints": {
+        "fade_in_beats": 16,
+        "fade_out_beats": 8,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["warmup", "easy_run", "cooldown"],
+        "avoid_for": ["sprint"]
+      }
+    },
+    {
+      "id": "forest_pad",
+      "file": "forest_pad.wav",
+      "musical": {
+        "key": "Cm",
+        "scale": "minor_pentatonic",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.85
+      },
+      "role": {
+        "type": "harmonic",
+        "layer": "mid",
+        "function": "foundation"
+      },
+      "energy": {
+        "intensity": 0.35,
+        "drive": 0.15,
+        "groove": 0.2
+      },
+      "mood": {
+        "tags": ["warm", "evolving", "lush"],
+        "valence": 0.65,
+        "arousal": 0.3
+      },
+      "sonic": {
+        "brightness": 0.45,
+        "density": 0.5,
+        "space": 0.85,
+        "warmth": 0.9
+      },
+      "mix_hints": {
+        "pairs_well_with": ["forest_drone", "forest_marimba", "forest_clicks"],
+        "conflicts_with": [],
+        "solo_capable": true,
+        "intro_suitable": true,
+        "climax_suitable": false
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 8,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["warmup", "easy_run"],
+        "avoid_for": []
+      }
+    },
+    {
+      "id": "forest_marimba",
+      "file": "forest_marimba.wav",
+      "musical": {
+        "key": "Cm",
+        "scale": "minor_pentatonic",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.9
+      },
+      "role": {
+        "type": "melodic",
+        "layer": "mid",
+        "function": "hook"
+      },
+      "energy": {
+        "intensity": 0.5,
+        "drive": 0.3,
+        "groove": 0.7
+      },
+      "mood": {
+        "tags": ["serene", "organic", "warm"],
+        "valence": 0.7,
+        "arousal": 0.4
+      },
+      "sonic": {
+        "brightness": 0.6,
+        "density": 0.3,
+        "space": 0.8,
+        "warmth": 0.9
+      },
+      "mix_hints": {
+        "pairs_well_with": ["forest_pad", "forest_clicks", "forest_bass"],
+        "conflicts_with": [],
+        "solo_capable": true,
+        "intro_suitable": true,
+        "climax_suitable": false
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 4,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["warmup", "easy_run"],
+        "avoid_for": ["sprint"]
+      }
+    },
+    {
+      "id": "forest_clicks",
+      "file": "forest_clicks.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "percussive",
+        "layer": "high",
+        "function": "accent"
+      },
+      "energy": {
+        "intensity": 0.4,
+        "drive": 0.35,
+        "groove": 0.65
+      },
+      "mood": {
+        "tags": ["playful", "organic", "light"],
+        "valence": 0.6,
+        "arousal": 0.5
+      },
+      "sonic": {
+        "brightness": 0.75,
+        "density": 0.25,
+        "space": 0.6,
+        "warmth": 0.5
+      },
+      "mix_hints": {
+        "pairs_well_with": ["forest_marimba", "forest_pad", "forest_bass"],
+        "conflicts_with": ["forest_shaker"],
+        "solo_capable": false,
+        "intro_suitable": false,
+        "climax_suitable": false
+      },
+      "transition_hints": {
+        "fade_in_beats": 4,
+        "fade_out_beats": 4,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["easy_run", "tempo"],
+        "avoid_for": ["cooldown"]
+      }
+    },
+    {
+      "id": "forest_bass",
+      "file": "forest_bass.wav",
+      "musical": {
+        "key": "Cm",
+        "scale": "aeolian",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.9
+      },
+      "role": {
+        "type": "harmonic",
+        "layer": "low",
+        "function": "drive"
+      },
+      "energy": {
+        "intensity": 0.6,
+        "drive": 0.6,
+        "groove": 0.7
+      },
+      "mood": {
+        "tags": ["deep", "propulsive", "earthy"],
+        "valence": 0.5,
+        "arousal": 0.55
+      },
+      "sonic": {
+        "brightness": 0.2,
+        "density": 0.6,
+        "space": 0.4,
+        "warmth": 0.85
+      },
+      "mix_hints": {
+        "pairs_well_with": ["forest_marimba", "forest_clicks", "forest_shaker"],
+        "conflicts_with": ["forest_drone"],
+        "solo_capable": false,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 4,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["easy_run", "tempo"],
+        "avoid_for": ["cooldown"]
+      }
+    },
+    {
+      "id": "forest_shaker",
+      "file": "forest_shaker.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "percussive",
+        "layer": "high",
+        "function": "drive"
+      },
+      "energy": {
+        "intensity": 0.55,
+        "drive": 0.65,
+        "groove": 0.8
+      },
+      "mood": {
+        "tags": ["energetic", "organic", "driving"],
+        "valence": 0.55,
+        "arousal": 0.65
+      },
+      "sonic": {
+        "brightness": 0.8,
+        "density": 0.35,
+        "space": 0.5,
+        "warmth": 0.4
+      },
+      "mix_hints": {
+        "pairs_well_with": ["forest_bass", "forest_bells", "forest_marimba"],
+        "conflicts_with": ["forest_clicks"],
+        "solo_capable": false,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 4,
+        "fade_out_beats": 2,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["tempo", "easy_run"],
+        "avoid_for": ["warmup", "cooldown"]
+      }
+    },
+    {
+      "id": "forest_bells",
+      "file": "forest_bells.wav",
+      "musical": {
+        "key": "Cm",
+        "scale": "minor_pentatonic",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.85
+      },
+      "role": {
+        "type": "melodic",
+        "layer": "high",
+        "function": "accent"
+      },
+      "energy": {
+        "intensity": 0.65,
+        "drive": 0.4,
+        "groove": 0.5
+      },
+      "mood": {
+        "tags": ["ethereal", "uplifting", "sparkling"],
+        "valence": 0.8,
+        "arousal": 0.6
+      },
+      "sonic": {
+        "brightness": 0.9,
+        "density": 0.3,
+        "space": 0.9,
+        "warmth": 0.5
+      },
+      "mix_hints": {
+        "pairs_well_with": ["forest_shaker", "forest_bass", "forest_pad"],
+        "conflicts_with": [],
+        "solo_capable": false,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 8,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["tempo", "easy_run"],
+        "avoid_for": ["cooldown"]
+      }
+    }
+  ]
+}

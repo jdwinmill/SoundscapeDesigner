@@ -11,6 +11,7 @@ import dearpygui.dearpygui as dpg
 import numpy as np
 
 from soundscape.config import SoundscapeConfig
+from soundscape.definition_builder import DefinitionBuilder
 from soundscape.mixer import Mixer
 from soundscape.stem import Stem
 
@@ -35,23 +36,24 @@ STEM_COLORS = [
 ]
 
 # UI palette
-_BG_DARK = (22, 22, 30)
-_BG_MID = (30, 30, 40)
-_BG_CHILD = (28, 28, 38)
-_ACCENT = (80, 140, 255)
-_ACCENT_HOVER = (100, 160, 255)
-_ACCENT_ACTIVE = (60, 120, 230)
+_BG_DARK = (15, 15, 20)
+_BG_MID = (25, 25, 35)
+_BG_CHILD = (22, 22, 30)
+_ACCENT = (99, 102, 241)
+_ACCENT_HOVER = (129, 140, 248)
+_ACCENT_ACTIVE = (79, 70, 229)
 _TEXT_DIM = (140, 140, 160)
-_TEXT_BRIGHT = (230, 230, 240)
-_SEPARATOR = (50, 50, 65)
-_FRAME_BG = (38, 38, 52)
-_FRAME_HOVER = (48, 48, 65)
-_GRAB = (90, 150, 255)
-_GRAB_ACTIVE = (110, 170, 255)
-_HEADER_BG = (35, 35, 48)
-_TABLE_ROW_ALT = (32, 32, 44)
+_TEXT_BRIGHT = (240, 240, 245)
+_SEPARATOR = (40, 40, 55)
+_FRAME_BG = (30, 30, 42)
+_FRAME_HOVER = (40, 40, 55)
+_GRAB = (99, 102, 241)
+_GRAB_ACTIVE = (129, 140, 248)
+_HEADER_BG = (28, 28, 40)
+_TABLE_ROW_ALT = (26, 26, 36)
 _RED_BTN = (200, 60, 60)
 _RED_BTN_HOVER = (220, 80, 80)
+_TRANSPORT_BG = (18, 18, 26)
 
 
 def _apply_global_theme():
@@ -59,21 +61,21 @@ def _apply_global_theme():
     with dpg.theme() as global_theme:
         with dpg.theme_component(dpg.mvAll):
             # Rounding
-            dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 6)
-            dpg.add_theme_style(dpg.mvStyleVar_ChildRounding, 8)
-            dpg.add_theme_style(dpg.mvStyleVar_WindowRounding, 8)
-            dpg.add_theme_style(dpg.mvStyleVar_PopupRounding, 8)
-            dpg.add_theme_style(dpg.mvStyleVar_ScrollbarRounding, 6)
-            dpg.add_theme_style(dpg.mvStyleVar_GrabRounding, 4)
-            dpg.add_theme_style(dpg.mvStyleVar_TabRounding, 6)
+            dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 8)
+            dpg.add_theme_style(dpg.mvStyleVar_ChildRounding, 10)
+            dpg.add_theme_style(dpg.mvStyleVar_WindowRounding, 10)
+            dpg.add_theme_style(dpg.mvStyleVar_PopupRounding, 10)
+            dpg.add_theme_style(dpg.mvStyleVar_ScrollbarRounding, 8)
+            dpg.add_theme_style(dpg.mvStyleVar_GrabRounding, 6)
+            dpg.add_theme_style(dpg.mvStyleVar_TabRounding, 8)
 
             # Spacing & padding
-            dpg.add_theme_style(dpg.mvStyleVar_FramePadding, 8, 5)
-            dpg.add_theme_style(dpg.mvStyleVar_ItemSpacing, 10, 6)
+            dpg.add_theme_style(dpg.mvStyleVar_FramePadding, 10, 7)
+            dpg.add_theme_style(dpg.mvStyleVar_ItemSpacing, 10, 8)
             dpg.add_theme_style(dpg.mvStyleVar_ItemInnerSpacing, 6, 4)
-            dpg.add_theme_style(dpg.mvStyleVar_WindowPadding, 16, 12)
-            dpg.add_theme_style(dpg.mvStyleVar_GrabMinSize, 14)
-            dpg.add_theme_style(dpg.mvStyleVar_ScrollbarSize, 12)
+            dpg.add_theme_style(dpg.mvStyleVar_WindowPadding, 20, 16)
+            dpg.add_theme_style(dpg.mvStyleVar_GrabMinSize, 18)
+            dpg.add_theme_style(dpg.mvStyleVar_ScrollbarSize, 10)
 
             # Colors — backgrounds
             dpg.add_theme_color(dpg.mvThemeCol_WindowBg, _BG_DARK)
@@ -87,9 +89,9 @@ def _apply_global_theme():
             dpg.add_theme_color(dpg.mvThemeCol_FrameBgActive, (55, 55, 75))
 
             # Colors — buttons
-            dpg.add_theme_color(dpg.mvThemeCol_Button, (45, 45, 62))
-            dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, (58, 58, 78))
-            dpg.add_theme_color(dpg.mvThemeCol_ButtonActive, (68, 68, 90))
+            dpg.add_theme_color(dpg.mvThemeCol_Button, (35, 35, 50))
+            dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, (48, 48, 68))
+            dpg.add_theme_color(dpg.mvThemeCol_ButtonActive, (58, 58, 80))
 
             # Colors — sliders / grabs
             dpg.add_theme_color(dpg.mvThemeCol_SliderGrab, _GRAB)
@@ -171,13 +173,21 @@ def _create_ghost_button_theme():
     return theme
 
 
+def _create_transport_theme():
+    """Distinct background for the transport toolbar strip."""
+    with dpg.theme() as theme:
+        with dpg.theme_component(dpg.mvChildWindow):
+            dpg.add_theme_color(dpg.mvThemeCol_ChildBg, _TRANSPORT_BG)
+    return theme
+
+
 def _section_header(label: str):
     """Draw a styled section header with a subtle separator."""
-    dpg.add_spacer(height=6)
+    dpg.add_spacer(height=10)
     dpg.add_separator()
     dpg.add_spacer(height=4)
     dpg.add_text(label, color=_ACCENT)
-    dpg.add_spacer(height=4)
+    dpg.add_spacer(height=6)
 
 
 class SoundscapeApp:
@@ -191,6 +201,7 @@ class SoundscapeApp:
         self._accent_theme = None
         self._danger_theme = None
         self._ghost_theme = None
+        self._def_builder: Optional[DefinitionBuilder] = None
 
     @staticmethod
     def _discover_presets() -> Dict[str, str]:
@@ -211,17 +222,38 @@ class SoundscapeApp:
             height=WINDOW_HEIGHT,
         )
 
+        # Load custom font
+        font_path = os.path.join(os.path.dirname(__file__), "fonts", "Inter-Regular.ttf")
+        if os.path.isfile(font_path):
+            with dpg.font_registry():
+                default_font = dpg.add_font(font_path, 16)
+                # Add Unicode glyph ranges for icons (arrows, play/stop, etc.)
+                dpg.add_font_range_hint(dpg.mvFontRangeHint_Default, parent=default_font)
+                dpg.add_font_range(0x2190, 0x21FF, parent=default_font)  # Arrows
+                dpg.add_font_range(0x25A0, 0x25FF, parent=default_font)  # Geometric shapes
+                dpg.add_font_range(0x2700, 0x27BF, parent=default_font)  # Dingbats
+            dpg.bind_font(default_font)
+
         _apply_global_theme()
         self._accent_theme = _create_accent_button_theme()
         self._danger_theme = _create_danger_button_theme()
         self._ghost_theme = _create_ghost_button_theme()
+        self._transport_theme = _create_transport_theme()
 
         with dpg.window(tag="primary", label="Soundscape Designer"):
-            self._build_transport()
-            self._build_tempo()
-            self._build_stem_list()
-            self._build_plot()
-            self._build_config_bar()
+            with dpg.tab_bar(tag="main_tab_bar"):
+                with dpg.tab(label="Designer", tag="designer_tab"):
+                    self._build_transport()
+                    dpg.bind_item_theme("transport_bar", self._transport_theme)
+                    self._build_tempo()
+                    self._build_stem_list()
+                    self._build_plot()
+                    self._build_config_bar()
+                with dpg.tab(label="Stem Definitions", tag="def_tab"):
+                    self._def_builder = DefinitionBuilder(
+                        self._accent_theme, self._danger_theme,
+                    )
+                    self._def_builder.build("def_tab")
 
         self._register_keyboard_shortcuts()
 
@@ -237,51 +269,52 @@ class SoundscapeApp:
     # ── Transport ──────────────────────────────────────────────
 
     def _build_transport(self):
-        with dpg.group(horizontal=True):
-            play_btn = dpg.add_button(
-                tag="play_btn",
-                label="  Play  ",
-                callback=self._on_play_stop,
-            )
-            dpg.bind_item_theme(play_btn, self._accent_theme)
-            with dpg.tooltip(play_btn):
-                dpg.add_text("Start / stop playback (Space)")
-
-            dpg.add_button(
-                label="Restart",
-                callback=self._on_reset,
-            )
-
-            dpg.add_spacer(width=24)
-
-            dpg.add_text("Master", color=_TEXT_DIM)
-            tag_master = dpg.add_slider_float(
-                tag="master_vol_slider",
-                default_value=1.0,
-                min_value=0.0,
-                max_value=1.0,
-                format="%.2f",
-                width=180,
-                callback=self._on_master_vol_change,
-            )
-            with dpg.tooltip(tag_master):
-                dpg.add_text("Global output level")
-
-            dpg.add_spacer(width=24)
-
-            # Preset selector in the transport bar — quick access
-            dpg.add_text("Preset", color=_TEXT_DIM)
-            preset_names = list(self._presets.keys())
-            if preset_names:
-                preset_combo = dpg.add_combo(
-                    tag="preset_combo",
-                    items=preset_names,
-                    default_value="",
-                    width=180,
-                    callback=self._on_preset_select,
+        with dpg.child_window(height=52, border=False, tag="transport_bar"):
+            with dpg.group(horizontal=True):
+                play_btn = dpg.add_button(
+                    tag="play_btn",
+                    label="\u25b6  Play",
+                    callback=self._on_play_stop,
                 )
-                with dpg.tooltip(preset_combo):
-                    dpg.add_text("Load a bundled soundscape preset")
+                dpg.bind_item_theme(play_btn, self._accent_theme)
+                with dpg.tooltip(play_btn):
+                    dpg.add_text("Start / stop playback (Space)")
+
+                dpg.add_button(
+                    label="\u21ba  Restart",
+                    callback=self._on_reset,
+                )
+
+                dpg.add_spacer(width=24)
+
+                dpg.add_text("Master", color=_TEXT_DIM)
+                tag_master = dpg.add_slider_float(
+                    tag="master_vol_slider",
+                    default_value=1.0,
+                    min_value=0.0,
+                    max_value=1.0,
+                    format="%.2f",
+                    width=180,
+                    callback=self._on_master_vol_change,
+                )
+                with dpg.tooltip(tag_master):
+                    dpg.add_text("Global output level")
+
+                dpg.add_spacer(width=24)
+
+                # Preset selector in the transport bar — quick access
+                dpg.add_text("Preset", color=_TEXT_DIM)
+                preset_names = list(self._presets.keys())
+                if preset_names:
+                    preset_combo = dpg.add_combo(
+                        tag="preset_combo",
+                        items=preset_names,
+                        default_value="",
+                        width=180,
+                        callback=self._on_preset_select,
+                    )
+                    with dpg.tooltip(preset_combo):
+                        dpg.add_text("Load a bundled soundscape preset")
 
     # ── Tempo ──────────────────────────────────────────────────
 
@@ -438,8 +471,17 @@ class SoundscapeApp:
                 callback=self._on_key_l,
             )
 
+    def _is_on_designer_tab(self) -> bool:
+        """Return True if the Designer tab is currently active."""
+        return dpg.get_value("main_tab_bar") == dpg.get_item_id("designer_tab")
+
     def _on_key_space(self):
-        focused = dpg.get_active_window()
+        # Don't trigger play/stop when typing in an input or on the Definitions tab
+        if not self._is_on_designer_tab():
+            return
+        active = dpg.get_item_type(dpg.get_active_window())
+        if "input" in active.lower():
+            return
         self._on_play_stop()
 
     def _on_key_e(self):
@@ -474,12 +516,12 @@ class SoundscapeApp:
         if self.playing:
             self.mixer.stop()
             self.playing = False
-            dpg.set_item_label("play_btn", "  Play  ")
+            dpg.set_item_label("play_btn", "\u25b6  Play")
         else:
             self._sync_stems()
             self.mixer.start()
             self.playing = True
-            dpg.set_item_label("play_btn", "  Stop  ")
+            dpg.set_item_label("play_btn", "\u25a0  Stop")
 
     def _on_reset(self):
         self.mixer.reset_positions()
@@ -721,21 +763,21 @@ class SoundscapeApp:
             # Actions: compact arrow buttons + remove
             with dpg.group(horizontal=True):
                 up_btn = dpg.add_button(
-                    label=" ^ ",
+                    label=" \u25b2 ",
                     user_data=stem_id,
                     callback=self._on_move_up,
                 )
                 dpg.bind_item_theme(up_btn, self._ghost_theme)
 
                 down_btn = dpg.add_button(
-                    label=" v ",
+                    label=" \u25bc ",
                     user_data=stem_id,
                     callback=self._on_move_down,
                 )
                 dpg.bind_item_theme(down_btn, self._ghost_theme)
 
                 remove_btn = dpg.add_button(
-                    label=" x ",
+                    label=" \u2715 ",
                     user_data=stem_id,
                     callback=self._on_remove,
                 )

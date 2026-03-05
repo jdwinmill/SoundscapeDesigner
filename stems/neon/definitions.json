@@ -1,0 +1,420 @@
+{
+  "pack": "neon",
+  "genre": "synthwave",
+  "mood_summary": "Retro-futuristic, neon-lit night drive energy. Analog synths and punchy drums that build from chill wave to full synthwave drive.",
+  "key_center": "F#m",
+  "bpm_center": 150,
+  "energy_range": [0.2, 0.85],
+  "best_for_phases": ["easy_run", "tempo", "interval_peak"],
+  "cross_pack_compatible_with": ["forest", "midnight"],
+  "stems": [
+    {
+      "id": "neon_pad_low",
+      "file": "neon_pad_low.wav",
+      "musical": {
+        "key": "F#m",
+        "scale": "dorian",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.8
+      },
+      "role": {
+        "type": "harmonic",
+        "layer": "low",
+        "function": "foundation"
+      },
+      "energy": {
+        "intensity": 0.2,
+        "drive": 0.1,
+        "groove": 0.1
+      },
+      "mood": {
+        "tags": ["warm", "nostalgic", "wide"],
+        "valence": 0.55,
+        "arousal": 0.2
+      },
+      "sonic": {
+        "brightness": 0.3,
+        "density": 0.5,
+        "space": 0.85,
+        "warmth": 0.95
+      },
+      "mix_hints": {
+        "pairs_well_with": ["neon_bass_walk", "neon_pad_mid"],
+        "conflicts_with": ["neon_bass_drive"],
+        "solo_capable": true,
+        "intro_suitable": true,
+        "climax_suitable": false
+      },
+      "transition_hints": {
+        "fade_in_beats": 16,
+        "fade_out_beats": 8,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["warmup", "cooldown", "easy_run"],
+        "avoid_for": ["sprint"]
+      }
+    },
+    {
+      "id": "neon_bass_walk",
+      "file": "neon_bass_walk.wav",
+      "musical": {
+        "key": "F#m",
+        "scale": "dorian",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.9
+      },
+      "role": {
+        "type": "melodic",
+        "layer": "low",
+        "function": "hook"
+      },
+      "energy": {
+        "intensity": 0.35,
+        "drive": 0.4,
+        "groove": 0.7
+      },
+      "mood": {
+        "tags": ["groovy", "cool", "retro"],
+        "valence": 0.6,
+        "arousal": 0.4
+      },
+      "sonic": {
+        "brightness": 0.3,
+        "density": 0.4,
+        "space": 0.3,
+        "warmth": 0.8
+      },
+      "mix_hints": {
+        "pairs_well_with": ["neon_pad_low", "neon_pad_mid", "neon_arp"],
+        "conflicts_with": ["neon_bass_drive"],
+        "solo_capable": true,
+        "intro_suitable": true,
+        "climax_suitable": false
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 4,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["warmup", "easy_run"],
+        "avoid_for": ["sprint"]
+      }
+    },
+    {
+      "id": "neon_pad_mid",
+      "file": "neon_pad_mid.wav",
+      "musical": {
+        "key": "F#m",
+        "scale": "dorian",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.85
+      },
+      "role": {
+        "type": "harmonic",
+        "layer": "mid",
+        "function": "foundation"
+      },
+      "energy": {
+        "intensity": 0.35,
+        "drive": 0.15,
+        "groove": 0.2
+      },
+      "mood": {
+        "tags": ["dreamy", "floating", "warm"],
+        "valence": 0.65,
+        "arousal": 0.3
+      },
+      "sonic": {
+        "brightness": 0.5,
+        "density": 0.45,
+        "space": 0.8,
+        "warmth": 0.85
+      },
+      "mix_hints": {
+        "pairs_well_with": ["neon_pad_low", "neon_arp", "neon_kick"],
+        "conflicts_with": [],
+        "solo_capable": false,
+        "intro_suitable": true,
+        "climax_suitable": false
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 8,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["warmup", "easy_run"],
+        "avoid_for": []
+      }
+    },
+    {
+      "id": "neon_arp",
+      "file": "neon_arp.wav",
+      "musical": {
+        "key": "F#m",
+        "scale": "dorian",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.95
+      },
+      "role": {
+        "type": "melodic",
+        "layer": "mid",
+        "function": "hook"
+      },
+      "energy": {
+        "intensity": 0.55,
+        "drive": 0.5,
+        "groove": 0.65
+      },
+      "mood": {
+        "tags": ["hypnotic", "pulsing", "electric"],
+        "valence": 0.6,
+        "arousal": 0.6
+      },
+      "sonic": {
+        "brightness": 0.7,
+        "density": 0.4,
+        "space": 0.6,
+        "warmth": 0.6
+      },
+      "mix_hints": {
+        "pairs_well_with": ["neon_pad_mid", "neon_kick", "neon_hihat"],
+        "conflicts_with": ["neon_lead"],
+        "solo_capable": true,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 4,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["easy_run", "tempo"],
+        "avoid_for": ["cooldown"]
+      }
+    },
+    {
+      "id": "neon_kick",
+      "file": "neon_kick.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "percussive",
+        "layer": "low",
+        "function": "drive"
+      },
+      "energy": {
+        "intensity": 0.7,
+        "drive": 0.8,
+        "groove": 0.75
+      },
+      "mood": {
+        "tags": ["powerful", "driving", "bold"],
+        "valence": 0.5,
+        "arousal": 0.75
+      },
+      "sonic": {
+        "brightness": 0.3,
+        "density": 0.5,
+        "space": 0.2,
+        "warmth": 0.7
+      },
+      "mix_hints": {
+        "pairs_well_with": ["neon_hihat", "neon_arp", "neon_bass_drive"],
+        "conflicts_with": [],
+        "solo_capable": false,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 4,
+        "fade_out_beats": 2,
+        "entry_point": "downbeat",
+        "exit_style": "cut"
+      },
+      "listener_context": {
+        "best_for": ["tempo", "interval_peak"],
+        "avoid_for": ["warmup", "cooldown"]
+      }
+    },
+    {
+      "id": "neon_hihat",
+      "file": "neon_hihat.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "percussive",
+        "layer": "high",
+        "function": "drive"
+      },
+      "energy": {
+        "intensity": 0.5,
+        "drive": 0.6,
+        "groove": 0.7
+      },
+      "mood": {
+        "tags": ["crisp", "mechanical", "tight"],
+        "valence": 0.45,
+        "arousal": 0.6
+      },
+      "sonic": {
+        "brightness": 0.9,
+        "density": 0.3,
+        "space": 0.4,
+        "warmth": 0.2
+      },
+      "mix_hints": {
+        "pairs_well_with": ["neon_kick", "neon_arp", "neon_bass_drive"],
+        "conflicts_with": [],
+        "solo_capable": false,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 4,
+        "fade_out_beats": 2,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["tempo", "interval_peak"],
+        "avoid_for": ["warmup", "cooldown"]
+      }
+    },
+    {
+      "id": "neon_bass_drive",
+      "file": "neon_bass_drive.wav",
+      "musical": {
+        "key": "F#m",
+        "scale": "dorian",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.85
+      },
+      "role": {
+        "type": "harmonic",
+        "layer": "low",
+        "function": "drive"
+      },
+      "energy": {
+        "intensity": 0.75,
+        "drive": 0.8,
+        "groove": 0.7
+      },
+      "mood": {
+        "tags": ["aggressive", "urgent", "intense"],
+        "valence": 0.4,
+        "arousal": 0.8
+      },
+      "sonic": {
+        "brightness": 0.4,
+        "density": 0.7,
+        "space": 0.2,
+        "warmth": 0.6
+      },
+      "mix_hints": {
+        "pairs_well_with": ["neon_kick", "neon_hihat", "neon_lead"],
+        "conflicts_with": ["neon_pad_low", "neon_bass_walk"],
+        "solo_capable": false,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 4,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["tempo", "interval_peak", "sprint"],
+        "avoid_for": ["warmup", "cooldown"]
+      }
+    },
+    {
+      "id": "neon_lead",
+      "file": "neon_lead.wav",
+      "musical": {
+        "key": "F#m",
+        "scale": "dorian",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.95
+      },
+      "role": {
+        "type": "melodic",
+        "layer": "high",
+        "function": "hook"
+      },
+      "energy": {
+        "intensity": 0.8,
+        "drive": 0.6,
+        "groove": 0.5
+      },
+      "mood": {
+        "tags": ["triumphant", "soaring", "electric"],
+        "valence": 0.75,
+        "arousal": 0.85
+      },
+      "sonic": {
+        "brightness": 0.85,
+        "density": 0.5,
+        "space": 0.7,
+        "warmth": 0.5
+      },
+      "mix_hints": {
+        "pairs_well_with": ["neon_bass_drive", "neon_kick", "neon_hihat"],
+        "conflicts_with": ["neon_arp"],
+        "solo_capable": true,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 8,
+        "entry_point": "downbeat",
+        "exit_style": "filter_sweep"
+      },
+      "listener_context": {
+        "best_for": ["interval_peak", "sprint"],
+        "avoid_for": ["warmup", "cooldown"]
+      }
+    }
+  ]
+}

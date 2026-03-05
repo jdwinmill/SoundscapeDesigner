@@ -1,0 +1,267 @@
+{
+  "pack": "dynamic",
+  "genre": "progressive_electronic",
+  "mood_summary": "Versatile, BPM-reactive percussion pack. Designed to scale from walking pace to full sprint with layered drum patterns that shift character across the tempo range.",
+  "key_center": "none",
+  "bpm_center": 150,
+  "energy_range": [0.2, 0.9],
+  "best_for_phases": ["warmup", "easy_run", "tempo", "interval_peak", "sprint"],
+  "cross_pack_compatible_with": ["forest", "neon", "midnight"],
+  "stems": [
+    {
+      "id": "dynamic_base",
+      "file": "base.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "textural",
+        "layer": "full",
+        "function": "foundation"
+      },
+      "energy": {
+        "intensity": 0.2,
+        "drive": 0.15,
+        "groove": 0.2
+      },
+      "mood": {
+        "tags": ["neutral", "steady", "ambient"],
+        "valence": 0.5,
+        "arousal": 0.2
+      },
+      "sonic": {
+        "brightness": 0.4,
+        "density": 0.3,
+        "space": 0.7,
+        "warmth": 0.6
+      },
+      "mix_hints": {
+        "pairs_well_with": ["dynamic_slow_drum", "dynamic_marching"],
+        "conflicts_with": [],
+        "solo_capable": true,
+        "intro_suitable": true,
+        "climax_suitable": false
+      },
+      "transition_hints": {
+        "fade_in_beats": 16,
+        "fade_out_beats": 16,
+        "entry_point": "any",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["warmup", "cooldown"],
+        "avoid_for": []
+      }
+    },
+    {
+      "id": "dynamic_slow_drum",
+      "file": "slow_drum.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 130,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "rhythmic",
+        "layer": "full",
+        "function": "drive"
+      },
+      "energy": {
+        "intensity": 0.4,
+        "drive": 0.45,
+        "groove": 0.6
+      },
+      "mood": {
+        "tags": ["relaxed", "steady", "grounded"],
+        "valence": 0.5,
+        "arousal": 0.35
+      },
+      "sonic": {
+        "brightness": 0.4,
+        "density": 0.4,
+        "space": 0.5,
+        "warmth": 0.6
+      },
+      "mix_hints": {
+        "pairs_well_with": ["dynamic_base", "dynamic_marching"],
+        "conflicts_with": ["dynamic_fast_drum", "dynamic_techno_base"],
+        "solo_capable": true,
+        "intro_suitable": true,
+        "climax_suitable": false
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 8,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["warmup", "easy_run"],
+        "avoid_for": ["sprint"]
+      }
+    },
+    {
+      "id": "dynamic_marching",
+      "file": "marching.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 135,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "rhythmic",
+        "layer": "full",
+        "function": "drive"
+      },
+      "energy": {
+        "intensity": 0.55,
+        "drive": 0.65,
+        "groove": 0.55
+      },
+      "mood": {
+        "tags": ["determined", "forward", "militant"],
+        "valence": 0.45,
+        "arousal": 0.55
+      },
+      "sonic": {
+        "brightness": 0.5,
+        "density": 0.5,
+        "space": 0.4,
+        "warmth": 0.5
+      },
+      "mix_hints": {
+        "pairs_well_with": ["dynamic_base", "dynamic_slow_drum"],
+        "conflicts_with": ["dynamic_techno_base"],
+        "solo_capable": true,
+        "intro_suitable": false,
+        "climax_suitable": false
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 4,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["easy_run", "tempo"],
+        "avoid_for": ["cooldown"]
+      }
+    },
+    {
+      "id": "dynamic_fast_drum",
+      "file": "fast_drum.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 155,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "rhythmic",
+        "layer": "full",
+        "function": "drive"
+      },
+      "energy": {
+        "intensity": 0.75,
+        "drive": 0.8,
+        "groove": 0.7
+      },
+      "mood": {
+        "tags": ["urgent", "pushing", "intense"],
+        "valence": 0.45,
+        "arousal": 0.75
+      },
+      "sonic": {
+        "brightness": 0.55,
+        "density": 0.6,
+        "space": 0.3,
+        "warmth": 0.45
+      },
+      "mix_hints": {
+        "pairs_well_with": ["dynamic_techno_base"],
+        "conflicts_with": ["dynamic_slow_drum"],
+        "solo_capable": true,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 4,
+        "fade_out_beats": 2,
+        "entry_point": "downbeat",
+        "exit_style": "cut"
+      },
+      "listener_context": {
+        "best_for": ["tempo", "interval_peak"],
+        "avoid_for": ["warmup", "cooldown"]
+      }
+    },
+    {
+      "id": "dynamic_techno_base",
+      "file": "techno_base.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 145,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "rhythmic",
+        "layer": "full",
+        "function": "drive"
+      },
+      "energy": {
+        "intensity": 0.85,
+        "drive": 0.9,
+        "groove": 0.8
+      },
+      "mood": {
+        "tags": ["relentless", "mechanical", "peak"],
+        "valence": 0.4,
+        "arousal": 0.9
+      },
+      "sonic": {
+        "brightness": 0.6,
+        "density": 0.7,
+        "space": 0.2,
+        "warmth": 0.35
+      },
+      "mix_hints": {
+        "pairs_well_with": ["dynamic_fast_drum"],
+        "conflicts_with": ["dynamic_slow_drum", "dynamic_marching"],
+        "solo_capable": true,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 4,
+        "entry_point": "downbeat",
+        "exit_style": "cut"
+      },
+      "listener_context": {
+        "best_for": ["interval_peak", "sprint"],
+        "avoid_for": ["warmup", "cooldown", "easy_run"]
+      }
+    }
+  ]
+}

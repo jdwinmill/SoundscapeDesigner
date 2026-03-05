@@ -1,0 +1,420 @@
+{
+  "pack": "midnight",
+  "genre": "dark_techno",
+  "mood_summary": "Late-night industrial energy. Deep sub bass, acid lines, and mechanical percussion that builds from brooding atmosphere to relentless drive.",
+  "key_center": "Dm",
+  "bpm_center": 150,
+  "energy_range": [0.2, 0.9],
+  "best_for_phases": ["tempo", "interval_peak", "sprint"],
+  "cross_pack_compatible_with": ["neon"],
+  "stems": [
+    {
+      "id": "midnight_drone",
+      "file": "midnight_drone.wav",
+      "musical": {
+        "key": "Dm",
+        "scale": "phrygian",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.7
+      },
+      "role": {
+        "type": "textural",
+        "layer": "low",
+        "function": "atmosphere"
+      },
+      "energy": {
+        "intensity": 0.2,
+        "drive": 0.1,
+        "groove": 0.05
+      },
+      "mood": {
+        "tags": ["ominous", "dark", "vast"],
+        "valence": 0.2,
+        "arousal": 0.25
+      },
+      "sonic": {
+        "brightness": 0.15,
+        "density": 0.5,
+        "space": 0.9,
+        "warmth": 0.6
+      },
+      "mix_hints": {
+        "pairs_well_with": ["midnight_texture", "midnight_sub"],
+        "conflicts_with": [],
+        "solo_capable": false,
+        "intro_suitable": true,
+        "climax_suitable": false
+      },
+      "transition_hints": {
+        "fade_in_beats": 16,
+        "fade_out_beats": 16,
+        "entry_point": "any",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["warmup", "easy_run"],
+        "avoid_for": ["sprint"]
+      }
+    },
+    {
+      "id": "midnight_texture",
+      "file": "midnight_texture.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "textural",
+        "layer": "mid",
+        "function": "atmosphere"
+      },
+      "energy": {
+        "intensity": 0.25,
+        "drive": 0.1,
+        "groove": 0.1
+      },
+      "mood": {
+        "tags": ["industrial", "gritty", "haunting"],
+        "valence": 0.2,
+        "arousal": 0.3
+      },
+      "sonic": {
+        "brightness": 0.4,
+        "density": 0.35,
+        "space": 0.75,
+        "warmth": 0.3
+      },
+      "mix_hints": {
+        "pairs_well_with": ["midnight_drone", "midnight_sub", "midnight_kick"],
+        "conflicts_with": [],
+        "solo_capable": false,
+        "intro_suitable": true,
+        "climax_suitable": false
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 8,
+        "entry_point": "any",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["warmup", "easy_run"],
+        "avoid_for": []
+      }
+    },
+    {
+      "id": "midnight_sub",
+      "file": "midnight_sub.wav",
+      "musical": {
+        "key": "Dm",
+        "scale": "phrygian",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.85
+      },
+      "role": {
+        "type": "harmonic",
+        "layer": "low",
+        "function": "foundation"
+      },
+      "energy": {
+        "intensity": 0.45,
+        "drive": 0.5,
+        "groove": 0.55
+      },
+      "mood": {
+        "tags": ["heavy", "rumbling", "dark"],
+        "valence": 0.25,
+        "arousal": 0.5
+      },
+      "sonic": {
+        "brightness": 0.1,
+        "density": 0.65,
+        "space": 0.3,
+        "warmth": 0.8
+      },
+      "mix_hints": {
+        "pairs_well_with": ["midnight_kick", "midnight_drone", "midnight_hat"],
+        "conflicts_with": [],
+        "solo_capable": false,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 4,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["easy_run", "tempo"],
+        "avoid_for": ["cooldown"]
+      }
+    },
+    {
+      "id": "midnight_kick",
+      "file": "midnight_kick.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "percussive",
+        "layer": "low",
+        "function": "drive"
+      },
+      "energy": {
+        "intensity": 0.7,
+        "drive": 0.85,
+        "groove": 0.75
+      },
+      "mood": {
+        "tags": ["relentless", "pounding", "dark"],
+        "valence": 0.3,
+        "arousal": 0.75
+      },
+      "sonic": {
+        "brightness": 0.25,
+        "density": 0.55,
+        "space": 0.15,
+        "warmth": 0.65
+      },
+      "mix_hints": {
+        "pairs_well_with": ["midnight_hat", "midnight_sub", "midnight_acid"],
+        "conflicts_with": [],
+        "solo_capable": false,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 4,
+        "fade_out_beats": 2,
+        "entry_point": "downbeat",
+        "exit_style": "cut"
+      },
+      "listener_context": {
+        "best_for": ["tempo", "interval_peak", "sprint"],
+        "avoid_for": ["warmup", "cooldown"]
+      }
+    },
+    {
+      "id": "midnight_hat",
+      "file": "midnight_hat.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "percussive",
+        "layer": "high",
+        "function": "drive"
+      },
+      "energy": {
+        "intensity": 0.5,
+        "drive": 0.6,
+        "groove": 0.65
+      },
+      "mood": {
+        "tags": ["sharp", "metallic", "precise"],
+        "valence": 0.35,
+        "arousal": 0.6
+      },
+      "sonic": {
+        "brightness": 0.85,
+        "density": 0.25,
+        "space": 0.35,
+        "warmth": 0.15
+      },
+      "mix_hints": {
+        "pairs_well_with": ["midnight_kick", "midnight_acid", "midnight_clap"],
+        "conflicts_with": [],
+        "solo_capable": false,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 4,
+        "fade_out_beats": 2,
+        "entry_point": "downbeat",
+        "exit_style": "fade"
+      },
+      "listener_context": {
+        "best_for": ["tempo", "interval_peak"],
+        "avoid_for": ["warmup", "cooldown"]
+      }
+    },
+    {
+      "id": "midnight_acid",
+      "file": "midnight_acid.wav",
+      "musical": {
+        "key": "Dm",
+        "scale": "phrygian",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.9
+      },
+      "role": {
+        "type": "melodic",
+        "layer": "mid",
+        "function": "hook"
+      },
+      "energy": {
+        "intensity": 0.7,
+        "drive": 0.7,
+        "groove": 0.75
+      },
+      "mood": {
+        "tags": ["hypnotic", "twisted", "urgent"],
+        "valence": 0.35,
+        "arousal": 0.75
+      },
+      "sonic": {
+        "brightness": 0.7,
+        "density": 0.5,
+        "space": 0.4,
+        "warmth": 0.4
+      },
+      "mix_hints": {
+        "pairs_well_with": ["midnight_kick", "midnight_hat", "midnight_sub"],
+        "conflicts_with": ["midnight_stab"],
+        "solo_capable": true,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 8,
+        "fade_out_beats": 4,
+        "entry_point": "downbeat",
+        "exit_style": "filter_sweep"
+      },
+      "listener_context": {
+        "best_for": ["tempo", "interval_peak", "sprint"],
+        "avoid_for": ["warmup", "cooldown"]
+      }
+    },
+    {
+      "id": "midnight_stab",
+      "file": "midnight_stab.wav",
+      "musical": {
+        "key": "Dm",
+        "scale": "phrygian",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.85
+      },
+      "role": {
+        "type": "melodic",
+        "layer": "mid",
+        "function": "accent"
+      },
+      "energy": {
+        "intensity": 0.75,
+        "drive": 0.55,
+        "groove": 0.5
+      },
+      "mood": {
+        "tags": ["aggressive", "sharp", "intense"],
+        "valence": 0.25,
+        "arousal": 0.8
+      },
+      "sonic": {
+        "brightness": 0.65,
+        "density": 0.6,
+        "space": 0.5,
+        "warmth": 0.35
+      },
+      "mix_hints": {
+        "pairs_well_with": ["midnight_kick", "midnight_clap", "midnight_sub"],
+        "conflicts_with": ["midnight_acid"],
+        "solo_capable": false,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 4,
+        "fade_out_beats": 4,
+        "entry_point": "downbeat",
+        "exit_style": "cut"
+      },
+      "listener_context": {
+        "best_for": ["interval_peak", "sprint"],
+        "avoid_for": ["warmup", "cooldown", "easy_run"]
+      }
+    },
+    {
+      "id": "midnight_clap",
+      "file": "midnight_clap.wav",
+      "musical": {
+        "key": "none",
+        "scale": "none",
+        "bpm": 150,
+        "time_signature": "4/4",
+        "duration_s": 32.0,
+        "loopable": true,
+        "key_confidence": 0.0
+      },
+      "role": {
+        "type": "percussive",
+        "layer": "mid",
+        "function": "accent"
+      },
+      "energy": {
+        "intensity": 0.6,
+        "drive": 0.5,
+        "groove": 0.6
+      },
+      "mood": {
+        "tags": ["punchy", "commanding", "raw"],
+        "valence": 0.4,
+        "arousal": 0.7
+      },
+      "sonic": {
+        "brightness": 0.7,
+        "density": 0.3,
+        "space": 0.5,
+        "warmth": 0.25
+      },
+      "mix_hints": {
+        "pairs_well_with": ["midnight_kick", "midnight_hat", "midnight_stab"],
+        "conflicts_with": [],
+        "solo_capable": false,
+        "intro_suitable": false,
+        "climax_suitable": true
+      },
+      "transition_hints": {
+        "fade_in_beats": 4,
+        "fade_out_beats": 2,
+        "entry_point": "downbeat",
+        "exit_style": "cut"
+      },
+      "listener_context": {
+        "best_for": ["interval_peak", "sprint"],
+        "avoid_for": ["warmup", "cooldown"]
+      }
+    }
+  ]
+}
