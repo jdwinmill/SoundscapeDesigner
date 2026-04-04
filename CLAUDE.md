@@ -15,7 +15,7 @@ Web platform for designing BPM-reactive audio soundscapes for runners. Built wit
 # Dev server (PHP + Vite)
 composer run dev
 
-# Tests (111 tests, 304 assertions)
+# Tests (119 tests, 337 assertions)
 php artisan test
 
 # Build frontend
@@ -41,9 +41,13 @@ Use `php` from Homebrew (`/opt/homebrew/opt/php/bin/php` — PHP 8.5). The Herd 
 
 - `resources/js/app.jsx` — Inertia entry point
 - `resources/js/lib/tokens.js` — Design tokens (colors, typography, effects, radii)
+- `resources/js/lib/curvemath.js` — Trapezoidal volume + piecewise-linear speed math (pure functions)
+- `resources/js/lib/designerReducer.js` — Soundscape Designer state management with undo/redo
+- `resources/js/lib/stemColors.js` — 12-color palette for stem lane assignment
 - `resources/css/app.css` — Tailwind @theme with CSS custom properties mirroring tokens.js
 - `resources/js/Layouts/AppLayout.jsx` — Shared layout (nav, footer, flash messages)
 - `resources/js/Components/` — FormInput, FlashMessages, SoundscapeCard, PackCard
+- `resources/js/Components/Designer/` — DesignerCanvas, StemBand, BpmAxis, constants
 - `resources/js/Pages/` — Home, Explore, Dashboard, DesignTokens, Auth/*, Packs/*, Soundscapes/*, Users/*
 
 ### Tests
@@ -59,6 +63,7 @@ Use `php` from Homebrew (`/opt/homebrew/opt/php/bin/php` — PHP 8.5). The Herd 
 - `tests/Feature/SanctumSpaTest.php` — Session-authenticated API calls from browser
 - `tests/Feature/ExploreSearchTest.php` — Server-side search filtering
 - `tests/Feature/FavoriteHydrationTest.php` — Favorite state passed to frontend
+- `tests/Feature/PackCreateFlowTest.php` — Simplified pack create + stem upload flow
 
 ## Key Architecture Decisions
 
@@ -70,6 +75,49 @@ Use `php` from Homebrew (`/opt/homebrew/opt/php/bin/php` — PHP 8.5). The Herd 
 - **Case-insensitive search**: Uses `ilike` on Postgres, `like` on SQLite (already case-insensitive). Helper in base Controller.
 - **Slug-based routing**: StemPack and Soundscape use auto-generated slugs for public URLs and route model binding.
 - **Server-side data**: Dashboard and Explore pass data as Inertia props. No raw fetch calls for page data — only for mutations (stem upload, favorite toggle, clone) which use XSRF cookies.
+
+## Soundscape Designer Architecture
+
+The designer is on branch `feature/soundscape-designer`. It's a single-page interactive editor at `/soundscapes/create` where the x-axis is BPM (60–240) and stems are visual trapezoid bands you drag, resize, and shape.
+
+### Component tree
+```
+Create.jsx (page — owns useReducer + audioEngine ref)
+├── DesignerHeader        (name, description, tags, save)
+├── DesignerCanvas (SVG)
+│   ├── BpmAxis           (tick marks, labels)
+│   ├── StemBand[]        (trapezoid per lane)
+│   │   └── StemBandHandles (drag: move, resize, fade, volume)
+│   ├── BpmScrubber       (amber vertical line)
+│   └── SpeedCurveEditor  (piecewise-linear overlay)
+├── StemLaneControls      (mute/solo/delete/speed)
+├── TransportBar          (play/stop, volume, BPM readout)
+└── StemPicker            (slide-out, browse packs, add stems)
+```
+
+### State: `designerReducer.js`
+- Single `useReducer`, no external library
+- Undo/redo via snapshot history (max 50 entries)
+- `lanes[]` holds per-stem config: bpmRange, fadeIn/Out, volume, speed, speedCurve, muted, solo, colorIndex, audioBuffer
+- Transport state (scrubBpm, isPlaying, masterVolume) excluded from undo history
+- `buildSavePayload(state)` maps directly to `POST /api/soundscapes` format
+
+### Rendering: SVG via React
+- Each StemBand is an SVG `<path>` trapezoid — fill opacity = volume, x position = BPM range, slopes = fade zones
+- Small element count (2-20 stems) — SVG gives free hit detection and pointer events
+- `DesignerCanvas` uses ResizeObserver for responsive width
+
+### Audio: `audioEngine.js` (planned)
+- Plain class, not React state. Accessed via ref.
+- Per-stem chain: `AudioBufferSourceNode (loop) → GainNode → masterGain → AnalyserNode → destination`
+- `setBpm(bpm)` recalculates all gains + playback rates with 50ms ramp to avoid clicks
+- `playbackRate = (currentBpm / baseBpm) * speedAtBpm(currentBpm)`
+
+### Curve math: `curvemath.js`
+- `volumeAtBpm()` — trapezoidal volume (matches Python Stem.volume_at_bpm)
+- `speedAtBpm()` — piecewise-linear with clamping (matches Python Stem.speed_at_bpm)
+- `volumeCurvePath()` — generates SVG path `d` attribute for trapezoid rendering
+- `bpmToPixel()` / `pixelToBpm()` — coordinate conversion utilities
 
 ## Design System
 
@@ -87,11 +135,6 @@ Use `php` from Homebrew (`/opt/homebrew/opt/php/bin/php` — PHP 8.5). The Herd 
 - `RefreshDatabase` trait on all feature tests (in-memory SQLite)
 - API returns JSON, web routes return Inertia responses
 - Public URLs: `/s/{slug}` (soundscapes), `/u/{username}` (profiles), `/packs/{slug}` (packs)
-
-## What's Not Built Yet
-
-- **Soundscape Designer** — The interactive Web Audio editor for shaping volume/speed curves. Placeholder at `/soundscapes/create`.
-- **Pack Create rework** — Should be a single flow: drag-drop stems + metadata together, not an empty form followed by individual uploads.
-- **Delete/edit UI** — No UI for deleting stems, packs, or soundscapes. No edit pack metadata. API endpoints exist.
-- **Public/private toggle UI** — No way to publish from the browser. API supports it.
-- **iOS app** — API is ready (token auth, config export format). Swift AVAudioEngine implementation pending.
+- Designer uses SVG for the canvas (not HTML/CSS or Canvas 2D)
+- Designer state is a single `useReducer` — no external state library
+- Web Audio engine is a plain class accessed via ref — not React state

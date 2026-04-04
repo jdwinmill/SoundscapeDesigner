@@ -63,6 +63,14 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('/packs/create', fn () => Inertia::render('Packs/Create'));
     Route::get('/soundscapes/create', fn () => Inertia::render('Soundscapes/Create'));
+    Route::get('/soundscapes/{soundscape:slug}/edit', function (\App\Models\Soundscape $soundscape) {
+        if ($soundscape->user_id !== request()->user()->id) {
+            abort(403);
+        }
+        return Inertia::render('Soundscapes/Edit', [
+            'soundscape' => $soundscape->load(['stems.stemPack:id,slug', 'tags'])->loadCount('favorites'),
+        ]);
+    });
 });
 
 // Public pack detail (with visibility check)
