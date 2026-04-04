@@ -3,9 +3,99 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
-@source '../**/*.js';
+@source '../**/*.jsx';
+
+/*
+ * Design Tokens — CSS Custom Properties
+ * Mirrors resources/js/lib/tokens.js
+ * Change values in both places, or use the JS tokens directly in components.
+ */
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    /* Typography */
+    --font-heading: 'Sora', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Base backgrounds */
+    --color-bg-primary: #0a0a0f;
+    --color-bg-secondary: #111118;
+    --color-bg-tertiary: #1a1a24;
+    --color-bg-elevated: #222230;
+
+    /* Accent */
+    --color-accent-teal: #00d4aa;
+    --color-accent-violet: #7c3aed;
+
+    /* Highlight */
+    --color-highlight-amber: #f59e0b;
+    --color-highlight-gold: #fbbf24;
+
+    /* Text */
+    --color-text-primary: #f0f0f5;
+    --color-text-secondary: #8b8b9e;
+    --color-text-muted: #5a5a6e;
+    --color-text-inverse: #0a0a0f;
+
+    /* Semantic */
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    --color-info: #3b82f6;
+
+    /* Borders */
+    --color-border-subtle: #1f1f2e;
+    --color-border-default: #2a2a3d;
+    --color-border-strong: #3a3a50;
+
+    /* Radii */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+}
+
+/* Base styles */
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+}
+
+/* Utility: accent gradient text */
+.text-gradient {
+    background: linear-gradient(135deg, var(--color-accent-teal) 0%, var(--color-accent-violet) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Utility: accent gradient background */
+.bg-gradient-accent {
+    background: linear-gradient(135deg, var(--color-accent-teal) 0%, var(--color-accent-violet) 100%);
+}
+
+/* Utility: glass morphism */
+.glass {
+    background: rgba(17, 17, 24, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Utility: glow effects */
+.glow-teal {
+    box-shadow: 0 0 20px rgba(0, 212, 170, 0.3);
+}
+
+.glow-violet {
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+
+.glow-amber {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
 }
