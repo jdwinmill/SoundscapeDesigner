@@ -83,6 +83,14 @@ export default function Show() {
                     <div className="flex flex-wrap gap-3">
                         {auth?.user && (
                             <>
+                                {soundscape.user_id === auth.user.id && (
+                                    <Link
+                                        href={`/soundscapes/${soundscape.slug}/edit`}
+                                        className="px-5 py-2.5 rounded-xl text-sm font-medium bg-gradient-accent text-text-inverse transition-all duration-250 hover:opacity-90"
+                                    >
+                                        Edit
+                                    </Link>
+                                )}
                                 <button
                                     onClick={toggleFavorite}
                                     className={`px-5 py-2.5 rounded-xl text-sm font-medium border transition-all duration-250 ${

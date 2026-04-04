@@ -29,7 +29,7 @@ class ExploreSearchTest extends TestCase
     public function test_explore_filters_packs_by_search(): void
     {
         StemPack::factory()->public()->create(['name' => 'Deep Ambient']);
-        StemPack::factory()->public()->create(['name' => 'Hard Techno']);
+        StemPack::factory()->public()->create(['name' => 'Hard Techno', 'genre' => 'techno', 'mood_summary' => 'intense energy']);
 
         $response = $this->get('/explore?search=Ambient');
 
