@@ -1,11 +1,6 @@
 import { useState, useEffect } from 'react';
 import StemPickerCard from './StemPickerCard';
-
-function csrfToken() {
-    return decodeURIComponent(
-        document.cookie.match(/XSRF-TOKEN=([^;]+)/)?.[1] || ''
-    );
-}
+import apiFetch from '../../lib/apiFetch';
 
 /**
  * Slide-out panel for browsing and adding stems to the designer.
@@ -26,10 +21,7 @@ export default function StemPicker({ open, onClose, onAddStem, userId }) {
     async function fetchPacks() {
         setLoading(true);
         try {
-            const res = await fetch('/api/stem-packs', {
-                credentials: 'same-origin',
-                headers: { 'X-XSRF-TOKEN': csrfToken() },
-            });
+            const res = await apiFetch('/api/stem-packs');
             if (res.ok) {
                 const json = await res.json();
                 setPacks(json.data || []);

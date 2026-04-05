@@ -2,12 +2,7 @@ import { router } from '@inertiajs/react';
 import { useState, useRef, useCallback } from 'react';
 import AppLayout from '../../Layouts/AppLayout';
 import FormInput from '../../Components/FormInput';
-
-function csrfToken() {
-    return decodeURIComponent(
-        document.cookie.match(/XSRF-TOKEN=([^;]+)/)?.[1] || ''
-    );
-}
+import apiFetch from '../../lib/apiFetch';
 
 function DropZone({ onFiles, disabled }) {
     const [dragOver, setDragOver] = useState(false);
@@ -168,10 +163,8 @@ export default function Create() {
         formData.append('name', stem.name);
 
         try {
-            const res = await fetch(`/api/stem-packs/${slug}/stems`, {
+            const res = await apiFetch(`/api/stem-packs/${slug}/stems`, {
                 method: 'POST',
-                headers: { 'X-XSRF-TOKEN': csrfToken() },
-                credentials: 'same-origin',
                 body: formData,
             });
 
@@ -206,13 +199,9 @@ export default function Create() {
             if (genre.trim()) body.genre = genre.trim();
             if (tags.length) body.tags = tags;
 
-            const res = await fetch('/api/stem-packs', {
+            const res = await apiFetch('/api/stem-packs', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-XSRF-TOKEN': csrfToken(),
-                },
-                credentials: 'same-origin',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
             });
 
@@ -232,8 +221,9 @@ export default function Create() {
 
             // Step 3: Redirect to the pack
             router.visit(`/packs/${pack.slug}`);
-        } catch {
-            setError('Something went wrong');
+        } catch (err) {
+            console.error('Pack creation failed:', err);
+            setError(err.message || 'Something went wrong');
             setCreating(false);
         }
     }

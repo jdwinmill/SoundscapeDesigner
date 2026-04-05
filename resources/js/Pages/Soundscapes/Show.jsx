@@ -1,21 +1,12 @@
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import AppLayout from '../../Layouts/AppLayout';
-
-function csrfToken() {
-    return decodeURIComponent(
-        document.cookie.match(/XSRF-TOKEN=([^;]+)/)?.[1] || ''
-    );
-}
+import apiFetch from '../../lib/apiFetch';
 
 async function apiPost(url, body = {}) {
-    return fetch(url, {
+    return apiFetch(url, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-XSRF-TOKEN': csrfToken(),
-        },
-        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
     });
 }

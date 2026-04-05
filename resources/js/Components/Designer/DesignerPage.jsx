@@ -8,12 +8,7 @@ import SpeedCurveEditor from './SpeedCurveEditor';
 import { designerReducer, initialState, buildSavePayload } from '../../lib/designerReducer';
 import { getColor } from '../../lib/stemColors';
 import AudioEngine from '../../lib/audioEngine';
-
-function csrfToken() {
-    return decodeURIComponent(
-        document.cookie.match(/XSRF-TOKEN=([^;]+)/)?.[1] || ''
-    );
-}
+import apiFetch from '../../lib/apiFetch';
 
 /**
  * Shared designer page component used by both Create and Edit.
@@ -204,13 +199,9 @@ export default function DesignerPage({ soundscape = null }) {
                 : '/api/soundscapes';
             const method = isEditMode ? 'PUT' : 'POST';
 
-            const res = await fetch(url, {
+            const res = await apiFetch(url, {
                 method,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-XSRF-TOKEN': csrfToken(),
-                },
-                credentials: 'same-origin',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
             });
 
